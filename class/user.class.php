@@ -1,8 +1,8 @@
 <?php
-class Usuarios {
-
+class Usuarios extends Acesso {
+    
     public function cadastrar($nome, $email, $senha, $cpf) {
-        global $pdo;
+        $pdo = $this->conexao();
         $sql = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email");
         $sql->bindValue(":email", $email);
         $sql->execute();
